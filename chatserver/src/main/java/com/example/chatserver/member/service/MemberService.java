@@ -31,7 +31,7 @@ public class MemberService {
         Member newMember = Member.builder()
                 .name(memberSaveReqDto.getName())
                 .email(memberSaveReqDto.getEmail())
-                .password(passwordEncoder.encode(memberSaveReqDto.getPassword())) //비밀번호를 암호화
+                .password(passwordEncoder.encode(memberSaveReqDto.getPassword())) // 비밀번호 인코딩
                 .build();
 
         Member member = memberRepository.save(newMember);
