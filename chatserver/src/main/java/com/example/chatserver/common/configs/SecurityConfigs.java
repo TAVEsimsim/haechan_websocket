@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 @Configuration
 @RequiredArgsConstructor
-public class Securityconfigs {
+public class SecurityConfigs {
     private final JwtAuthFilter jwtAuthFilter;
   
     @Bean
