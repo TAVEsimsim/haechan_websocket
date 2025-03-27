@@ -28,7 +28,7 @@ public class SecurityConfigs {
                 .cors(cors->cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable) // 비활성화
                 .httpBasic(AbstractHttpConfigurer::disable) // 비활성화
-                // 특정 URL 패턴에 대해서는 인증 처리를 하지 않을 것
+                // 특정 URL 패턴에 대해서는 인증 처리를 하지 않을 것 +) /connect/** 을 등록해둬서 웹소켓 요청은 토큰 없이, 즉 인증 없이 바로 접근이 가능 함
                 .authorizeHttpRequests(a -> a.requestMatchers("/member/create", "/member/doLogin", "/connect/**").permitAll().anyRequest().authenticated())
                 // 세션을 사용하지 않을 것
                 .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
