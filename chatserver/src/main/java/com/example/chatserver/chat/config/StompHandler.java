@@ -33,8 +33,6 @@ public class StompHandler implements ChannelInterceptor {
         if (StompCommand.CONNECT == accessor.getCommand()) {
             // CONNECT 요청이 들어왔을 때
             // 여기서 토큰 검증을 해야 함
-            // 토큰 검증을 해서 문제가 없으면 accessor.setUser()로 사용자 정보를 넣어줌
-            // 사용자 정보를 넣어주면 이후에는 사용자 정보를 꺼내서 사용할 수 있음
             log.info("Connect 요청 시 토큰 유효성 검증 시작");
             // "Authorization"로 담겨진 토큰 꺼내기
             String bearerToken = accessor.getFirstNativeHeader("Authorization");
@@ -51,7 +49,6 @@ public class StompHandler implements ChannelInterceptor {
 
             log.info("토큰 검증 완료!!");
         }
-
         return ChannelInterceptor.super.preSend(message, channel);
     }
 }
